@@ -11,7 +11,12 @@
 	let y = 55;
 	let maxW = 0;
 	let maxH = 0;
+	let instance = null;
 
+	function instanceHandler(e) {
+		instance = e.detail;
+		// console.log(e);
+	}
 	/**
 	 * p5 sketch for circle control bound to inputs
 	 * @param p5 p5 instance
@@ -22,10 +27,12 @@
 			maxW = p5.windowWidth;
 			maxH = p5.windowHeight;
 			p5.createCanvas(maxW, maxH);
+			const buffer = new p5.File(new Blob());
+			console.log(buffer);
 		};
 
 		p5.draw = () => {
-			p5.ellipse(x, y, 20, 20);
+			// let v = p5.Vector.fromAngle(p5.radians(10), 30);
 		};
 
 		p5.windowResized = () => {
@@ -63,4 +70,4 @@
 	</div>
 </div>
 
-<P5 {sketch} />
+<P5 {sketch} Vector on:ref={(e) => instanceHandler(e)} />
