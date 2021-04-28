@@ -1,13 +1,23 @@
 <script>
 	import P5 from '../components/canvas/P5.svelte';
+
+	// Meta content
 	let brand = 'Karma Lies';
 	let title = 'Sandbox';
+	let description = 'a little playground for generative art and shit 🥪';
+
+	// Sketch properties
 	let x = 55;
 	let y = 55;
 	let maxW = 0;
 	let maxH = 0;
 
-	const sketch = (p5, Vector) => {
+	/**
+	 * p5 sketch for circle control bound to inputs
+	 * @param p5 p5 instance
+	 * @returns {void} nothin directly
+	 */
+	const sketch = (p5) => {
 		p5.setup = () => {
 			maxW = p5.windowWidth;
 			maxH = p5.windowHeight;
@@ -28,7 +38,9 @@
 
 <svelte:head>
 	<title>{title} - {brand}</title>
-	<description>A little playground for generative art projects</description>
+	<meta name="description" content={description} />
+	<meta name="og:title" content="{title} - {brand}" />
+	<meta name="og:description" content={description} />
 </svelte:head>
 
 <div
