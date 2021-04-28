@@ -1,38 +1,31 @@
-# create-svelte
+# 🥪 sandbox ⛱
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+a set of generative art experiments using [SvelteKit](https://kit.svelte.dev/) and [p5-svelte](https://github.com/tonyketcham/p5-svelte) 🧙‍♂️
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## ⚙️ Developing
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've cloned the project, install dependencies with `pnpm install`. Then start a development server:
 
 ```bash
-npm run dev
+pnpm dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# or start the server and open the app in a new browser tab 🚀
+pnpm dev -- --open
+
+# check code linting with Prettier / eslint 👔
+pnpm lint
+
+# fix formatting issues 🔨
+pnpm format
 ```
 
-## Building
+## 🦑 Building
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
+This project is setup to build with the Netlify [adapter](https://kit.svelte.dev/docs#adapters), but the build target can easily be swapped out by dropping in different adapters.
 
 ```bash
-npm run build
+pnpm build
 ```
 
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+> You can preview the built app with `pnpm preview`, regardless of whether you installed an adapter. This should _not_ be used to serve the app in production.
