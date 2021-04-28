@@ -11,14 +11,10 @@
 	const event = createEventDispatcher();
 	const dispatch = {
 		ref() {
-			event('instance', {
-				ref: target
-			});
+			event('ref', target);
 		},
 		instance() {
-			event('instance', {
-				instance: project
-			});
+			event('instance', project);
 		},
 		p5() {
 			event('');
@@ -37,13 +33,28 @@
 			}
 		};
 	}
+	function augmentClasses(instance, classes) {
+		classes.forEach(([key, value]) => (instance[key] = value));
+		return instance;
+	}
 
 	/**
 	 * When the client loads, create the p5 instance
 	 */
 	onMount(async () => {
-		const { default: p5, Vector } = await import('p5');
-		project = new p5((instance) => sketch(instance, Vector), target);
+		const library = await import('p5');
+		const { default: p5 } = library;
+
+		const entries = Object.entries(library);
+		const nativeClasses = entries.filter(
+			([key, value]) => value instanceof Function && key[0] !== '_' && key !== 'default'
+		);
+
+		project = new p5((instance) => {
+			instance = augmentClasses(instance, nativeClasses);
+			console.log(instance);
+			return sketch(instance);
+		}, target);
 
 		// Initial event dispatching
 		dispatch.ref();
