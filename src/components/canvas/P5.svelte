@@ -4,6 +4,7 @@
 
 	// API properties
 	export let project = undefined;
+	export let p5_instance = undefined;
 	export let target = undefined;
 	export let sketch = placeholder;
 
@@ -14,10 +15,10 @@
 			event('ref', target);
 		},
 		instance() {
-			event('instance', project);
+			event('instance', p5_instance);
 		},
-		p5() {
-			event('');
+		project() {
+			event('project', project);
 		}
 	};
 
@@ -51,14 +52,17 @@
 		);
 
 		project = new p5((instance) => {
-			instance = augmentClasses(instance, nativeClasses);
-			console.log(instance);
+			p5_instance = instance;
+
+			dispatch.instance();
+			// instance = augmentClasses(instance, nativeClasses);
+			// p5_instance = instance;
 			return sketch(instance);
 		}, target);
 
 		// Initial event dispatching
 		dispatch.ref();
-		dispatch.instance();
+		dispatch.project();
 	});
 </script>
 

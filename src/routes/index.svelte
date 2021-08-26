@@ -14,8 +14,8 @@
 	let instance = null;
 
 	function instanceHandler(e) {
-		instance = e.detail;
-		// console.log(e);
+		// instance = e.detail;
+		console.log(e);
 	}
 	/**
 	 * p5 sketch for circle control bound to inputs
@@ -70,4 +70,9 @@
 	</div>
 </div>
 
-<P5 {sketch} Vector on:ref={(e) => instanceHandler(e)} />
+<P5
+	{sketch}
+	on:ref={(e) => instanceHandler(e)}
+	on:instance={(e) => instanceHandler(e)}
+	on:project={(e) => instanceHandler(e)}
+/>
