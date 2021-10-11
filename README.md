@@ -1,6 +1,6 @@
 # 🥪 sandbox ⛱
 
-a set of generative art experiments using [SvelteKit](https://kit.svelte.dev/) and [p5-svelte](https://github.com/tonyketcham/p5-svelte) 🧙‍♂️
+a set (currently one element long) of generative art experiments using [SvelteKit](https://kit.svelte.dev/) and [p5-svelte](https://github.com/tonyketcham/p5-svelte) 🧙‍♂️
 
 
 ## ⚙️ Developing
